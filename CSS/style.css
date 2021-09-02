@@ -15,6 +15,22 @@ body {
     margin: 0;
 }
 
+#footer {
+    position: absolute;
+    bottom: 5px;
+    width: 100%; /* Set the fixed height of the footer here */
+    height: 10px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    text-align: center;
+    color: white;
+  }
+  
+  #footer p {
+    margin: 0;
+    font-size: 16px;
+  }
+
 /* Reference for glow feature https://www.w3schools.com/howto/howto_css_glowing_text.asp */
 .glow {
     font-size: 60px;
