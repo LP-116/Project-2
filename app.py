@@ -67,6 +67,16 @@ def suburb_lga():
 
     return jsonify(all_suburbs)
 
+@app.route("/api/v1.0/suburbs")
+def suburbs():
+
+    session = Session(engine)
+    
+    suburbs = session.query(location.suburb).order_by(location.suburb.asc()).all()
+
+    session.close()
+
+    return jsonify(suburbs)
 
 
 
