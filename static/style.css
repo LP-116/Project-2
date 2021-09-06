@@ -1,5 +1,5 @@
 .jumbotron {
-    background-image: url("../images/bars.png");
+    background-image: url("../static/images/bars.png");
     background-size: cover;
     margin: 0 
 }
