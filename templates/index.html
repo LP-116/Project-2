@@ -57,7 +57,9 @@
                 <div class="col-lg-6" id="user-selection">
                   <div class="suburb-selection">
                     <h5>Suburb selection:</h5>
-                    <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                    
+                    <input type="search" list="mylist">
+                    <datalist id="mylist"> </datalist>
                   </div>
                 </div>
             </div>
@@ -82,6 +84,7 @@
           </div>
         <!-- This script is required to get the drop down options to work.--> 
         <!-- <script src="static/js/app.js"></script> -->
+      
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="./static/js/app.js"></script>

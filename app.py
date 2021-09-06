@@ -55,6 +55,7 @@ def suburb_lga():
     session.close()
 
     all_suburbs = []
+    
 
     for suburb, lga, lat, lng in suburb_data:
         suburb_dict = {}
