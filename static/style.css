@@ -26,9 +26,14 @@ body {
     color: white;
   }
   
-  #footer p {
+#footer p {
     margin: 0;
     font-size: 16px;
+  }
+
+#myChart {
+  width: 100%;
+  height: 100%;
   }
 
 /* Reference for glow feature https://www.w3schools.com/howto/howto_css_glowing_text.asp */

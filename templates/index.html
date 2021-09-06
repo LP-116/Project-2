@@ -56,10 +56,8 @@
                 </div>
                 <div class="col-lg-6" id="user-selection">
                   <div class="suburb-selection">
-                    <h5>Suburb selection:</h5>
-                    
-                    <input type="search" list="mylist">
-                    <datalist id="mylist"> </datalist>
+                      <h5>Select suburb:</h5>
+                      <select id="selDataset" onchange="optionChanged(this.value)"></select>
                   </div>
                 </div>
             </div>
@@ -72,9 +70,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12" id="heatmap">
-                    <p> heatmap goes here</p>
+              <div class="col-lg-12" id="chartReport">
+               <canvas id="myChart"></canvas>
                 </div>
+            </div>
             </div>
 
         </div>
@@ -84,7 +83,8 @@
           </div>
         <!-- This script is required to get the drop down options to work.--> 
         <!-- <script src="static/js/app.js"></script> -->
-      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="./static/js/app.js"></script>
