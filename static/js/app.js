@@ -6,14 +6,14 @@ function init() {
 
         var dropdownNames = item;
         // console.log(dropdownNames);
-
+        
         dropdownNames.forEach((item) => {
         dropdownMenu
             .append("option")
             .text(item)
             .property("value", item);
         });
-
+        
         buildGraph();
     });
 };
@@ -27,7 +27,8 @@ function buildGraph() {
 
         document.querySelector("#chartReport").innerHTML = '<canvas id="myChart"></canvas>';
 
-        var idSelect =  d3.select("#selDataset").property("value");
+        var idSelect = d3.select("#selDataset").property("value")
+
         console.log(idSelect);
 
         console.log(data[0])

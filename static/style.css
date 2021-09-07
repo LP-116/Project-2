@@ -32,8 +32,8 @@ body {
   }
 
 #myChart {
-  width: 100%;
-  height: 100%;
+  width: 700px;
+  height: 700px;
   }
 
 /* Reference for glow feature https://www.w3schools.com/howto/howto_css_glowing_text.asp */

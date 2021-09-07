@@ -94,5 +94,11 @@ def incidents():
     return jsonify(incidents)
 
 
+@app.route("/data.html")
+def data_tab():
+
+    return render_template("data.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
