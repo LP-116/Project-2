@@ -51,23 +51,27 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-6" id="user-selection">
-                  <div class="suburb-selection">
-                      <h5>Select suburb:</h5>
-                      <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                <div class="col-lg-2" id="user-selection">
+                  <div class="form-group">
+                    <div class="list-group" id="filters">
+                        <input class="form-control" id="datetime" type="text" placeholder="Select Year">
+                      </div>
+                    </div>
                   </div>
+                  <div class="col-lg-2" id="user-selection">
+                    <div class="form-group">
+                      <div class="list-group" id="filters">
+                          <input class="form-control" id="datetime" type="text" placeholder="Select Suburb">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-2" id="user-selection">
+                      <label for="date"></label>
+                      <button id="filter-btn" type="button" class="btn btn-secondary">Filter Table</button>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6" id="news-scraping">
-                    <p> bar graph 1 here </p>
-                </div>
-                <div class="col-lg-6" id="user-selection">
-                    <p> another  graph here</p>
-                </div>
-            </div>
-
-        </div>
+            <hr>
 
         <div class="bg-primary" id="footer">
             <p>Monash University Data Analytics Bootcamp 2021 &nbsp &copy;&nbsp Project 2 completed by Amber Van Harskamp, Mathew Johnson & Leanne Porter. </p>
