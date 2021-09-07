@@ -42,7 +42,7 @@ function startSpinner() {
     // your code to make the spinner start
     $("#filter-btn").prop("disabled", true);
     $("#filter-btn").html(
-        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...`
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>&nbsp Loading...`
     );
 }
 
