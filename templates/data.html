@@ -54,24 +54,57 @@
                 <div class="col-lg-2" id="user-selection">
                   <div class="form-group">
                     <div class="list-group" id="filters">
-                        <input class="form-control" id="datetime" type="text" placeholder="Select Year">
-                      </div>
+                        <input list="myList" type="search" placeholder="Select Suburb">
+                        <datalist id="myList"></datalist>
+                      </div> 
                     </div>
                   </div>
                   <div class="col-lg-2" id="user-selection">
                     <div class="form-group">
                       <div class="list-group" id="filters">
-                          <input class="form-control" id="datetime" type="text" placeholder="Select Suburb">
-                        </div>
+                        <input list="myList2" type="search" placeholder="Select Year">
+                        <datalist id="myList2">
+                          <option value="2021">
+                          <option value="2020">
+                          <option value="2019">
+                          <option value="2018">
+                          <option value="2017">
+                          <option value="2016">
+                          <option value="2015">
+                          <option value="2014">
+                          <option value="2013">
+                          <option value="2012">
+                        </datalist>
+                      </div> 
                       </div>
                     </div>
                     <div class="col-lg-2" id="user-selection">
                       <label for="date"></label>
-                      <button id="filter-btn" type="button" class="btn btn-secondary">Filter Table</button>
+                      <button id="filter-btn" type="button" class="btn btn-info">Filter Table</button>
                     </div>
                 </div>
             </div>
             <hr>
+            <p></p>
+            <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+              <div id="table-area" class="table-responsive-lg bg-info">
+                  <table id="ufo-table" class="table table-striped">
+                  <thead>
+                      <tr>
+                      <th class="table-head">Year</th>
+                      <th class="table-head">Suburb</th>
+                      <th class="table-head">Offence Division</th>
+                      <th class="table-head">Offence Sub Division</th>
+                      <th class="table-head">No. of Incidents</th>
+                      </tr>
+                  </thead>
+                  <tbody></tbody>
+                  </table>
+              </div>
+              </div>
+            </div>
 
         <div class="bg-primary" id="footer">
             <p>Monash University Data Analytics Bootcamp 2021 &nbsp &copy;&nbsp Project 2 completed by Amber Van Harskamp, Mathew Johnson & Leanne Porter. </p>
@@ -82,7 +115,7 @@
         
         <script src="https://d3js.org/d3.v5.min.js"></script>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-        <script src="./static/js/app2.js"></script>
+        <script src="./static/js/data-app.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     </body>

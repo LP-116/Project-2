@@ -100,5 +100,18 @@ def data_tab():
     return render_template("data.html")
 
 
+@app.route("/api/v1.0/data_tab")
+def data():
+
+    session = Session(engine)
+    
+    data_tab = session.query(crime.year, crime.suburb, crime.offence_div, crime.offence_sub_div, func.sum(crime.incidents)).group_by(crime.offence_sub_div, crime.suburb, crime.year, crime.offence_div).order_by((crime.suburb).asc()).all()
+
+    session.close()
+
+
+    return jsonify(data_tab)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
