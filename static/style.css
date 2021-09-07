@@ -35,7 +35,8 @@ body {
   }
 
 
-
+#spinner { visibility:hidden; } 
+body.busy .spinner { visibility:visible !important; }
 
 
 /* Reference for glow feature https://www.w3schools.com/howto/howto_css_glowing_text.asp */

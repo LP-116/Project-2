@@ -38,13 +38,30 @@ function buildTable() {
 });
 }
 
+function startSpinner() {
+    // your code to make the spinner start
+    $("#filter-btn").prop("disabled", true);
+    $("#filter-btn").html(
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...`
+    );
+}
+
+function stopSpinner() {
+    // you code to make the spinner stop
+    // (i.e., return the button to its original state)
+    $("#filter-btn").prop("disabled", false);
+    $("#filter-btn").html('Filter Table');
+}
+
+
 var filterButton = d3.select("#filter-btn");
 
 filterButton.on("click", runFilter);
 
 
-
 function runFilter() {
+
+    startSpinner()
 
     d3.event.preventDefault();
 
@@ -83,6 +100,9 @@ function runFilter() {
                 row.append("td").text(value);
             });
         });
+
+    
+        stopSpinner()  
 
     }
 
