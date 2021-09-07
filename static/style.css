@@ -16,25 +16,27 @@ body {
 }
 
 #footer {
-    position: absolute;
-    bottom: 5px;
+    position: fixed;
+    bottom: 0px;
     width: 100%; 
-    height: 10px;
-    padding-top: 20px;
-    padding-bottom: 40px;
     text-align: center;
     color: white;
+    height: 25px;
   }
   
 #footer p {
     margin: 0;
-    font-size: 16px;
+    font-size: 14px;
   }
 
 #myChart {
   width: 700px;
   height: 700px;
   }
+
+
+
+
 
 /* Reference for glow feature https://www.w3schools.com/howto/howto_css_glowing_text.asp */
 .glow {
