@@ -34,7 +34,16 @@ body {
   height: 700px;
   }
 
+#user-selection {
+  background-color:rgba(76, 91, 221, 0.363);
+  border-color: black;
+  border-radius: 4px;
 
+}
+
+#user-selection h5{
+  color:black;
+}
 
 /* Reference for glow feature https://www.w3schools.com/howto/howto_css_glowing_text.asp */
 .glow {

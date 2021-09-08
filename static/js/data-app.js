@@ -86,7 +86,8 @@ function runFilter() {
     
             tbody.html("");
     
-            tbody.text("No results for selected inputs.");}
+            tbody.text("No results for selected inputs.");
+            stopSpinner()}
     
         else {
         

@@ -51,21 +51,26 @@
                 </div>
             </div>
             <div class="row">
+              <div class="col-lg-4" id="user-selection">
+                <h5>Select suburb to explore the dataset:</h5>
+                <div class="suburb-selection">
+                    <select id="selDataset" onchange="optionChanged(this.value)">
+                      <option value="" disabled selected>Select Suburb</option></select>
+                    </div>
+                    <p></p>
+                </div>
+                <div class="col-lg-2"></div>
                 <div class="col-lg-6" id="news-scraping">
                     <p> News scraping headline here</p>
                 </div>
-                <div class="col-lg-6" id="user-selection">
-                  <div class="suburb-selection">
-                      <h5>Select suburb:</h5>
-                      <select id="selDataset" onchange="optionChanged(this.value)"></select>
-                  </div>
-                </div>
+                <p></p>
+                <hr>
             </div>
             <div class="row">
                 <div class="col-lg-6" id="news-scraping">
                     <p> bar graph 1 here </p>
                 </div>
-                <div class="col-lg-6" id="user-selection">
+                <div class="col-lg-6">
                     <p> another  graph here</p>
                 </div>
             </div>
