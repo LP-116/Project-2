@@ -102,5 +102,17 @@ def data():
     return jsonify(data_tab)
 
 
+@app.route("/api/v1.0/line_data")
+def line():
+
+    session = Session(engine)
+    
+    line_data = session.query(crime.year, crime.suburb, func.sum(crime.incidents)).group_by(crime.year, crime.suburb).order_by((crime.year).desc()).all()
+
+    session.close()
+
+    return jsonify(line_data)
+
+
 if __name__ == "__main__":
     app.run(debug=True)

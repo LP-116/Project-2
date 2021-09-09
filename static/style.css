@@ -1,8 +1,8 @@
-.jumbotron {
+/* .jumbotron {
     background-image: url("../static/images/bars.png");
     background-size: cover;
     margin: 0 
-}
+} */
 
 /* .heading {
     margin: 0px;
@@ -15,31 +15,22 @@ body {
     margin: 0;
 }
 
-/* #footer {
-    position: fixed;
-    margin: 0px;
-    bottom: 0px;
-    width: 100% !important; 
-    text-align: center;
-    color: white;
-    height: 25px;
-  }
-   */
 
 #footer {
-    clear: both;
-    position: relative;
+    position: fixed;
+    bottom: 0;
     height: 25px;
     width: 100% !important; 
     text-align: center;
-    color: white;
-    margin:0px
+    color: white !important;
+  
 }
 
 
 #footer p {
     margin: 0;
     font-size: 14px;
+    color: white !important;
   }
 
 #chartReport {
@@ -47,6 +38,25 @@ body {
   height: 400px;
 
 }
+
+#chartReport2 {
+  width: 500px;
+  height: 400px;
+}
+
+/* canvas{
+  width:600px !important;
+  height:350px !important;
+
+} */
+
+/* #myChart2 {
+  width: 600px;
+  height: 400px;
+  
+} */
+
+.ChartReport.defaults.global.responsive = false;
 
 .legend {
   padding: 6px 8px;
@@ -102,9 +112,9 @@ body > div.map-container {
     font-size: 60px;
     color: whitesmoke;
     text-align: center;
-    -webkit-animation: glow 0.6s ease-in-out infinite alternate;
-    -moz-animation: glow 0.6s ease-in-out infinite alternate;
-    animation: glow 0.6s ease-in-out infinite alternate;
+    -webkit-animation: glow 0.7s ease-in-out infinite alternate;
+    -moz-animation: glow 0.7s ease-in-out infinite alternate;
+    animation: glow 0.7s ease-in-out infinite alternate;
   }
   
   @-webkit-keyframes glow {
