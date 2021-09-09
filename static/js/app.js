@@ -20,7 +20,6 @@ function init() {
    
 };
 
-buildGraph();
 
 function buildGraph() {
     
@@ -163,9 +162,7 @@ function buildGraph() {
 
 
 function optionChanged()
-{ buildGraph()
-
-}
+{ buildGraph() }
 
 
 init();
