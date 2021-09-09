@@ -1,17 +1,3 @@
-var myMap = L.map("map", {
-    center: [-37.840935, 144.946457],
-    zoom: 10
-  });
-
-var outdoorLayer =L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
-    attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
-    tileSize: 512,
-    maxZoom: 12,
-    zoomOffset: -1,
-    id: "mapbox/streets-v11",
-    accessToken: "pk.eyJ1IjoibWpqb2huc29uOTQiLCJhIjoiY2tzcGx5eTI0MDRrMjJvcTR5dXJvYW9lbSJ9._mU94YuzAPKe6OVDEhkzKg"
-  }).addTo(myMap);
-
 
 var incidentsURL = "/api/v1.0/map2"
 
@@ -48,69 +34,83 @@ function legendColor(d) {
 
 }
 
-function incidents(data) {
-
-
-        for (var i = 0; i < data.length; i++) {
-           L.circle([data[i][2],data[i][3]], {
-                weight: 0.4,
-                color: "black",
-                fillColor: circleColor(data[i][4]),
-                fillOpacity: 0.7,
-                radius: 800
-            }).addTo(myMap);
-    }; 
-
-}
-
-
-
-
 
 d3.json("/api/v1.0/map2").then(function(data) {
 
+    
+    var outdoorLayer =L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+        attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
+        tileSize: 512,
+        maxZoom: 12,
+        zoomOffset: -1,
+        id: "mapbox/streets-v11",
+        accessToken: "pk.eyJ1IjoibWpqb2huc29uOTQiLCJhIjoiY2tzcGx5eTI0MDRrMjJvcTR5dXJvYW9lbSJ9._mU94YuzAPKe6OVDEhkzKg"
+      });
+    
+    var satelliteLayer = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
+        attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
+        tileSize: 512,
+        maxZoom: 18,
+        zoomOffset: -1,
+        id: "mapbox/satellite-v9",
+        accessToken: "pk.eyJ1IjoibWpqb2huc29uOTQiLCJhIjoiY2tzcGx5eTI0MDRrMjJvcTR5dXJvYW9lbSJ9._mU94YuzAPKe6OVDEhkzKg"
+        });
+    
 
+    var incidents = new L.LayerGroup();
     for (var i = 0; i < data.length; i++) {
-      var incidents = L.circle([data[i][2],data[i][3]], {
+            L.circle([data[i][2],data[i][3]], { 
             weight: 0.4,
             color: "black",
             fillColor: circleColor(data[i][4]),
             fillOpacity: 0.7,
-            radius: 800
-        }).addTo(myMap);
-        }
+            radius: 800, 
+            }).bindPopup("<strong>" + data[i][1] + "</strong>" +
+            "<br>"+"No. of incidents: " + data[i][4]).addTo(incidents);}
+
 
     var baseMaps = {
-        "Outdoors": outdoorLayer
+        "Outdoors": outdoorLayer,
+        "Satellite": satelliteLayer
         }
 
     var overlayMaps = {
         Incidents: incidents
         };
 
+    
+    var myMap = L.map("map", {
+            center: [-37.840935, 144.946457],
+            zoom: 10,
+            layers:[outdoorLayer, incidents]
+          });
+
     L.control.layers(baseMaps, overlayMaps, {
             collapsed: false
         }).addTo(myMap);
 
+
+    var legend = L.control({position: 'bottomright'});
+
+    legend.onAdd = function (map) {
+        
+        var div = L.DomUtil.create('div', 'info legend'),
+        grades = [0, 200, 500, 1000, 2000, 5000, 10000],
+        labels = [];
+        
+            for (var i = 0; i < grades.length; i++) {
+                div.innerHTML += 
+                    '<div><i style="background:' + legendColor(grades[i] + 1) + '"></i> ' + 
+                    grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+' +'</div>');
+        }
+        
+        return div;
+        };
+      
+      legend.addTo(myMap);
+      
+
 })
 
 
-var legend = L.control({position: 'bottomright'});
-
-  legend.onAdd = function (map) {
-  
-      var div = L.DomUtil.create('div', 'info legend'),
-      grades = [0, 200, 500, 1000, 2000, 5000, 10000],
-      labels = [];
-  
-      for (var i = 0; i < grades.length; i++) {
-          div.innerHTML += 
-              '<div><i style="background:' + legendColor(grades[i] + 1) + '"></i> ' + 
-              grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+' +'</div>');
-  }
-  
-  return div;
-  };
-
-legend.addTo(myMap);
 
