@@ -67,9 +67,21 @@ def map():
 
     year = "2021"
 
-    map_data = session.query(crime.suburb, crime.incidents, crime.year, crime.latitude, crime.longitude).all()
+    map_data = session.query(crime.suburb, crime.incidents, crime.year, crime.latitude, crime.longitude).filter(crime.year == year).all()
 
     return jsonify(map_data)
+
+
+@app.route("/api/v1.0/map2")
+def total_map():
+
+    session = Session(engine)
+
+    year = "2021"
+
+    total_map = session.query(crime.year, crime.suburb, crime.latitude, crime.longitude, func.sum(crime.incidents)).group_by(crime.year, crime.suburb, crime.latitude, crime.longitude).filter((crime.year == year)).order_by(func.sum(crime.incidents).desc()).all()
+
+    return jsonify(total_map)
 
 
 @app.route("/data.html")

@@ -47,8 +47,8 @@ function buildGraph() {
             }
         }
 
-        var top5_incidents = incident_list.slice(0,5).reverse();
-        var top5_sub_div = offence_sub_div_list.slice(0,5).reverse();
+        var top5_incidents = incident_list.slice(0,5);
+        var top5_sub_div = offence_sub_div_list.slice(0,5);
 
         console.log(top5_incidents);
         console.log(top5_sub_div);
@@ -76,14 +76,16 @@ function buildGraph() {
             maintainAspectRatio: false,
 
             title: {
-                            display: true,
-                            text: "Offences Comitted by Type of Offence"    },
+                    display: true,
+                    text: "Offences Comitted by Type of Offence"
+                },
             
             scales: {
-                            yAxes: [{
-                            ticks: {
-                            beginAtZero: true,
-                            grouped: true}
+                    yAxes: [{
+                    ticks: {
+                    beginAtZero: true,
+                    grouped: true
+                }
                 }]
 
             },
@@ -93,20 +95,9 @@ function buildGraph() {
 
 };
 
-function buildmap() {
-
-    d3.json("/api/v1.0/map").then((data) => {
-
-        console.log(data[0])
 
 
 
-
-})
-
-}
-
-buildmap()
 
 function optionChanged()
 {
