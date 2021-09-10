@@ -1,16 +1,3 @@
-/* .jumbotron {
-    background-image: url("../static/images/bars.png");
-    background-size: cover;
-    margin: 0 
-} */
-
-/* .heading {
-    margin: 0px;
-    width: 100%;
-    padding: 0;
-
-} */
-
 body {
     margin: 0;
 }
@@ -64,10 +51,13 @@ body {
 div.info.legend.leaflet-control br { clear: both; } 
 
 
-#user-selection h5{
+#user-selection {
   color:black;
 }
 
+#selDataset {
+  height: 25px;
+}
 
 #map
 { height: 350px; 
@@ -84,8 +74,36 @@ body > div.map-container {
     vertical-align: top;
 }
 
+h3 {
+  color:#ff0000;
+  text-align: center;
+
+}
+
+
+h5 {
+  color: #13137a;
+  text-align: center;
+}
+
 .card {
+  border-color: navy;
   height: 10rem;
+  background-color: #cce0ff;
+  border-width: medium;
+  
+}
+
+p {
+  text-align: center;
+}
+
+.card1 {
+  border-color: #cc0000;
+  border-width: medium;
+  height: 10rem;
+  width: 15rem;
+  background-color: white
 }
 
 .card2 {
@@ -95,12 +113,7 @@ body > div.map-container {
 
 .card3 {
   height: 10rem;
-  width: 15rem;
-}
-
-.card1 {
-  height: 10rem;
-  width: 15rem;
+  width: 12rem;
 }
 
 /* Reference for glow feature https://www.w3schools.com/howto/howto_css_glowing_text.asp */
@@ -118,7 +131,7 @@ body > div.map-container {
       text-shadow: 0 0 10px #13137a, 0 0 20px #1a1aff, 0 0 30px #1a1aff, 0 0 40px #1a1aff, 0 0 50px #80bfff, 0 0 60px #80bfff, 0 0 70px #80bfff;
     }
     to {
-      text-shadow: 0 0 20px #eb8181, 0 0 30px #ec4646, 0 0 40px #f10202, 0 0 50px #f10202, 0 0 60px rgb(151, 0, 0), 0 0 70px #1a1aff, 0 0 80px #1a1aff;
+      text-shadow: 0 0 20px #ff0000, 0 0 30px #ec4646, 0 0 40px #f10202, 0 0 50px #f10202, 0 0 60px rgb(151, 0, 0), 0 0 70px #1a1aff, 0 0 80px #1a1aff;
     }
   }
   /* text-shadow: 0 0 20px #6666ff, 0 0 30px #1a1aff, 0 0 40px #1a1aff, 0 0 50px #1a1aff, 0 0 60px #1a1aff, 0 0 70px #1a1aff, 0 0 80px #1a1aff; */
@@ -135,7 +148,7 @@ body > div.map-container {
   
   @-webkit-keyframes glow2 {
     from {
-        text-shadow: 0 0 20px #eb8181, 0 0 30px #ec4646, 0 0 40px #f10202, 0 0 50px #f10202, 0 0 60px rgb(151, 0, 0), 0 0 70px #1a1aff, 0 0 80px #1a1aff;
+        text-shadow: 0 0 20px #ff0000, 0 0 30px #ec4646, 0 0 40px #f10202, 0 0 50px #f10202, 0 0 60px rgb(151, 0, 0), 0 0 70px #1a1aff, 0 0 80px #1a1aff;
     }
     to {
       text-shadow: 0 0 10px #13137a, 0 0 20px #1a1aff, 0 0 30px #1a1aff, 0 0 40px #1a1aff, 0 0 50px #80bfff, 0 0 60px #80bfff, 0 0 70px #80bfff;

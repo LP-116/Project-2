@@ -38,7 +38,7 @@ def suburbs():
     session = Session(engine)
     
     suburbs = session.query(crime.suburb).order_by((crime.suburb).asc()).distinct().all()
-
+    
     session.close()
 
     return jsonify(suburbs)
