@@ -22,8 +22,6 @@ body {
     height: 25px;
     width: 100% !important; 
     text-align: center;
-    color: white !important;
-  
 }
 
 
@@ -86,6 +84,24 @@ body > div.map-container {
     vertical-align: top;
 }
 
+.card {
+  height: 10rem;
+}
+
+.card2 {
+  height: 10rem;
+  width: 15rem;
+}
+
+.card3 {
+  height: 10rem;
+  width: 15rem;
+}
+
+.card1 {
+  height: 10rem;
+  width: 15rem;
+}
 
 /* Reference for glow feature https://www.w3schools.com/howto/howto_css_glowing_text.asp */
 .glow {

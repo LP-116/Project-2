@@ -68,13 +68,45 @@
             <br>
               <hr>
             <div class="row">
-              <div class="col-lg-4" id="user-selection">
-                <h5>Select suburb to explore the dataset:</h5>
-                <div class="suburb-selection">
-                    <select id="selDataset" onchange="optionChanged(this.value)">
-                      <option >Melbourne</option></select>
+              <div class="col-sm-1"></div>
+                  <div class="col-sm-3" id="user-selection">
+                    <div class="card card1">
+                      <div class="card-body">
+                        <p></p>
+                        <h5>Select suburb to explore the dataset:</h5>
+                        <p></p>
+                        <select id="selDataset" onchange="optionChanged(this.value)">
+                        <option >Melbourne</option></select>
+                      </div>
                     </div>
-                    <p></p>
+                  </div>
+                <div class="col-sm-2">
+                  <div class="card card3">
+                    <div class="card-body">
+                      <h3 class="card-title">2021</h3>
+                      <h5 class="card-title">Total Number of Offences:</h5>
+                      <h5 class="card-text" id="card2021"></h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="card card3">
+                    <div class="card-body">
+                      <h3 class="card-title">2020</h3>
+                      <h5 class="card-title">Total Number of Offences:</h5>
+                      <h5 class="card-text" id="card2020"></h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <div class="card card2">
+                    <div class="card-body">
+                      <h3 class="card-title">2021 vs 2020</h3>
+                      <h5 class="card-title">Total difference:</h5>
+                      <h5 class="card-text" id="difference"><p></p></h5>
+                      <h5 class="card-text" id="difference2"><p></p></h5>
+                    </div>
+                  </div>
                 </div>
                 <p></p>
                 <hr>
@@ -105,15 +137,6 @@
               </div>
             </div>
            </div>
-
-
-        <div class="container-fluid">
-        <div class="row">
-        <footer id="footer">
-            <p>Monash University Data Analytics Bootcamp 2021 &nbsp &copy;&nbsp Project 2 completed by Amber Van Harskamp, Mathew Johnson & Leanne Porter. </p>
-          </footer>
-        </div>
-      </div>
 
         <!-- This script is required to get the drop down options to work.--> 
         <!-- Leaflet JS -->

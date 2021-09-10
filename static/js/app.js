@@ -15,6 +15,7 @@ function init() {
         });
         
         buildGraph();
+        updatestats();
 
     });
    
@@ -51,7 +52,7 @@ function buildGraph() {
         console.log(top5_incidents);
         console.log(top5_sub_div);
 
-        const barColors = ["#87CEEB", "#1E90FF", "#00008B", "#87CEEB", "#1E90FF", "#00008B", "#87CEEB", "#1E90FF", "#00008B"]
+        const barColors = ["#87CEEB", "#1E90FF", "#00008B", "#1f50cc", "#1E90FF"]
         var myChart = new Chart("myChart", {
         type: "horizontalBar",
 
@@ -121,15 +122,15 @@ function buildGraph() {
         data: {
           labels: year_list.reverse(),
           datasets: [{
-            //// INSERT Y AXIS DATA IN 'DATA' ///////
             data: incident_list.reverse(),
             grouped: true, 
             maxBarThickness: 50, 
-            //// INSERT X AXIS DATA IN 'LABEL' /////
             label: "Total Number of Offences",   
             fill: false,
             borderDash: [5, 5],    
-            borderColor: "#87CEEB",
+            borderColor: "#1f50cc",
+            pointBordercolor: "navy",
+            pointBackgroundColor: 'red',
             pointStyle: 'rectRot'
           }]
         },
@@ -158,11 +159,67 @@ function buildGraph() {
 
 }
 
+function updatestats() {
+
+
+    d3.json("/api/v1.0/stats_data").then((data) => {
+
+        var idSelect = d3.select("#selDataset").property("value")
+
+        console.log(idSelect);
+
+        incident_list = []
+        incident_list2 = []
+
+        for (var i in data) {
+
+            if(data[i][1] === idSelect && data[i][0] === parseInt("2021")){
+                incident_list.push(data[i][4])
+            }
+        }
+
+        for (var x in data) {
+
+            if(data[x][1] === idSelect && data[x][0] === parseInt("2020")){
+                incident_list2.push(data[x][4])
+            }
+        }
+
+        var difference = (incident_list[0] - incident_list2[0])
+        var difference2 = ((incident_list2[0] - incident_list[0]) / incident_list[0] * 100).toFixed(2);
+
+        d3.select("#card2021").text(incident_list[0]);
+        d3.select("#card2020").text(incident_list2[0]);
+        d3.select("#difference").text(difference);
+
+        if (difference < 0) {
+
+            d3.select("#difference2").text((difference2) + "% decrease");
+            }
+
+            else {
+                var newDifference = Math.abs(difference2)
+                d3.select("#difference2").text((newDifference) + "% increase");
+            }
+
+        console.log(incident_list);
+        console.log(incident_list2);
+   
+
+
+
+    })
+
+
+}
+
 
 
 
 function optionChanged()
-{ buildGraph() }
+{ buildGraph();
+updatestats()
+ }
 
 
 init();

@@ -133,5 +133,21 @@ def line():
     return jsonify(line_data)
 
 
+@app.route("/api/v1.0/stats_data")
+def stats():
+
+    session = Session(engine)
+
+    year = "2020"
+    
+    stats = session.query(crime.year, crime.suburb, crime.latitude, crime.longitude, func.sum(crime.incidents)).group_by(crime.year, crime.suburb, crime.latitude, crime.longitude).filter((crime.year >= year)).order_by(func.sum(crime.incidents).desc()).all()
+
+    session.close()
+
+    return jsonify(stats)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
+
+
