@@ -35,7 +35,7 @@ function legendColor(d) {
 }
 
 
-d3.json("/api/v1.0/map2").then(function(data) {
+d3.json("/api/v1.0/map").then(function(data) {
 
     
     var outdoorLayer =L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
@@ -66,7 +66,41 @@ d3.json("/api/v1.0/map2").then(function(data) {
             fillOpacity: 0.7,
             radius: 800, 
             }).bindPopup("<strong>" + data[i][1] + "</strong>" +
-            "<br>"+"No. of incidents: " + data[i][4]).addTo(incidents);}
+            "<br>"+"2021 no. of incidents: " + data[i][4]).addTo(incidents);}
+
+    var incidents2020 = new L.LayerGroup();
+
+    d3.json("/api/v1.0/map2").then(function(data) {
+
+    
+    for (var i = 0; i < data.length; i++) {
+            L.circle([data[i][2],data[i][3]], { 
+            weight: 0.4,
+            color: "black",
+            fillColor: circleColor(data[i][4]),
+            fillOpacity: 0.7,
+            radius: 800, 
+            }).bindPopup("<strong>" + data[i][1] + "</strong>" +
+            "<br>"+"2020 no. of incidents: " + data[i][4]).addTo(incidents2020);}
+
+        })
+
+    var incidents2015 = new L.LayerGroup();
+
+    d3.json("/api/v1.0/map3").then(function(data) {
+
+    
+    for (var i = 0; i < data.length; i++) {
+            L.circle([data[i][2],data[i][3]], { 
+            weight: 0.4,
+            color: "black",
+            fillColor: circleColor(data[i][4]),
+            fillOpacity: 0.7,
+            radius: 800, 
+            }).bindPopup("<strong>" + data[i][1] + "</strong>" +
+            "<br>"+"2015 no. of incidents: " + data[i][4]).addTo(incidents2015);}
+        
+        })
 
 
     var baseMaps = {
@@ -75,7 +109,9 @@ d3.json("/api/v1.0/map2").then(function(data) {
         }
 
     var overlayMaps = {
-        Incidents: incidents
+        "2021 Incidents": incidents,
+        "2020 Incidents": incidents2020,
+        "2015 Incidents": incidents2015
         };
 
     
@@ -85,9 +121,10 @@ d3.json("/api/v1.0/map2").then(function(data) {
             layers:[outdoorLayer, incidents]
           });
 
-    L.control.layers(baseMaps, overlayMaps, {
-            collapsed: false
-        }).addTo(myMap);
+
+    L.control.layers(baseMaps).addTo(myMap);
+
+    L.control.layers(overlayMaps,null,{collapsed:false}).addTo(myMap);
 
 
     var legend = L.control({position: 'bottomright'});

@@ -27,8 +27,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def welcome():
-    return render_template("index.html")
 
+    return render_template("index.html")
 
 
 
@@ -61,18 +61,6 @@ def incidents():
 
 
 @app.route("/api/v1.0/map")
-def map():
-
-    session = Session(engine)
-
-    year = "2021"
-
-    map_data = session.query(crime.suburb, crime.incidents, crime.year, crime.latitude, crime.longitude).filter(crime.year == year).all()
-
-    return jsonify(map_data)
-
-
-@app.route("/api/v1.0/map2")
 def total_map():
 
     session = Session(engine)
@@ -81,7 +69,38 @@ def total_map():
 
     total_map = session.query(crime.year, crime.suburb, crime.latitude, crime.longitude, func.sum(crime.incidents)).group_by(crime.year, crime.suburb, crime.latitude, crime.longitude).filter((crime.year == year)).order_by(func.sum(crime.incidents).desc()).all()
 
+    session.close()
+
     return jsonify(total_map)
+
+
+
+@app.route("/api/v1.0/map2")
+def map_2020():
+
+    session = Session(engine)
+
+    year = "2020"
+
+    map_2020 = session.query(crime.year, crime.suburb, crime.latitude, crime.longitude, func.sum(crime.incidents)).group_by(crime.year, crime.suburb, crime.latitude, crime.longitude).filter((crime.year == year)).order_by(func.sum(crime.incidents).desc()).all()
+
+    session.close()
+
+    return jsonify(map_2020)
+
+
+@app.route("/api/v1.0/map3")
+def map_2015():
+
+    session = Session(engine)
+
+    year = "2015"
+
+    map_2015 = session.query(crime.year, crime.suburb, crime.latitude, crime.longitude, func.sum(crime.incidents)).group_by(crime.year, crime.suburb, crime.latitude, crime.longitude).filter((crime.year == year)).order_by(func.sum(crime.incidents).desc()).all()
+
+    session.close()
+
+    return jsonify(map_2015)
 
 
 @app.route("/data.html")

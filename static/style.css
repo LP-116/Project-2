@@ -44,25 +44,12 @@ body {
   height: 400px;
 }
 
-/* canvas{
-  width:600px !important;
-  height:350px !important;
-
-} */
-
-/* #myChart2 {
-  width: 600px;
-  height: 400px;
-  
-} */
-
-.ChartReport.defaults.global.responsive = false;
 
 .legend {
   padding: 6px 8px;
   font-weight: bold;
   color: black;
-  background: #fff;
+  background: #fff !important;
   border-radius: 5px;
   text-align: center;
 
@@ -78,13 +65,6 @@ body {
 
 div.info.legend.leaflet-control br { clear: both; } 
 
-
-/* #user-selection {
-  background-color:rgba(76, 91, 221, 0.363);
-  border-color: black;
-  border-radius: 4px;
-
-} */
 
 #user-selection h5{
   color:black;
@@ -148,23 +128,6 @@ body > div.map-container {
 
   @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-  /* .glyphicon-remove{
-      padding: 3px 0px 0px 0px;
-      color: #fff;
-      background-color: #000;
-      height: 25px;
-      width: 25px;
-      border-radius: 15px;
-      border: 2px solid #fff;
-  }
-  
-  .scroll-text{
-      color: #000;
-  }
-
-  .img { object-fit: contain; }
-   */
-
 .mt-5 {
   margin:0 !important;
 }
@@ -195,4 +158,3 @@ body > div.map-container {
     border-color:red;
     display: inline-block
 }
-  
