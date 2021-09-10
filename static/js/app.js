@@ -76,7 +76,8 @@ function buildGraph() {
 
             title: {
                     display: true,
-                    text: "Offences Comitted by Type of Offence"
+                    text: "2021: Top 5 Offences Comitted",
+                    fontSize: 16
                 },
             
             scales: {
@@ -143,7 +144,8 @@ function buildGraph() {
 
             title: {
             display: true,
-            text: "Offences Comitted by Type of Offence"    },
+            text: "Total No. of Offences Comitted from 2012 - 2021",
+            fontSize: 16},
             
             scales: {
                 yAxes: [{
@@ -153,6 +155,7 @@ function buildGraph() {
                 }]
             },
     }})
+
 
 
 });
