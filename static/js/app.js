@@ -202,11 +202,6 @@ function updatestats() {
                 d3.select("#difference2").text((newDifference) + "% increase");
             }
 
-        console.log(incident_list);
-        console.log(incident_list2);
-   
-
-
 
     })
 
