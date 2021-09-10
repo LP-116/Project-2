@@ -122,9 +122,9 @@ p {
     font-size: 60px;
     color: whitesmoke;
     text-align: center;
-    -webkit-animation: glow 0.6s ease-in-out infinite alternate;
-    -moz-animation: glow 0.6s ease-in-out infinite alternate;
-    animation: glow 0.6s ease-in-out infinite alternate;
+    -webkit-animation: glow 0.5s ease-in-out infinite alternate;
+    -moz-animation: glow 0.5s ease-in-out infinite alternate;
+    animation: glow 0.5s ease-in-out infinite alternate;
   }
   
   @-webkit-keyframes glow {
@@ -142,9 +142,9 @@ p {
     font-size: 60px;
     color: whitesmoke;
     text-align: center;
-    -webkit-animation: glow2 0.6s ease-in-out infinite alternate;
-    -moz-animation: glow2 0.6s ease-in-out infinite alternate;
-    animation: glow2 0.6s ease-in-out infinite alternate;
+    -webkit-animation: glow2 0.5s ease-in-out infinite alternate;
+    -moz-animation: glow2 0.5s ease-in-out infinite alternate;
+    animation: glow2 0.5s ease-in-out infinite alternate;
   }
   
   @-webkit-keyframes glow2 {

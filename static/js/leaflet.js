@@ -65,8 +65,8 @@ d3.json("/api/v1.0/map").then(function(data) {
             fillColor: circleColor(data[i][4]),
             fillOpacity: 0.7,
             radius: 800, 
-            }).bindPopup("<strong>" + data[i][1] + "</strong>" +
-            "<br>"+"2021 no. of incidents: " + data[i][4]).addTo(incidents);}
+            }).bindPopup("<strong>" + "Year 2021: " +  data[i][1] + "</strong>" +
+            "<br>"+"No. of incidents: " + data[i][4]).addTo(incidents);}
 
     var incidents2020 = new L.LayerGroup();
 
@@ -80,8 +80,8 @@ d3.json("/api/v1.0/map").then(function(data) {
             fillColor: circleColor(data[i][4]),
             fillOpacity: 0.7,
             radius: 800, 
-            }).bindPopup("<strong>" + data[i][1] + "</strong>" +
-            "<br>"+"2020 no. of incidents: " + data[i][4]).addTo(incidents2020);}
+            }).bindPopup("<strong>" + "Year 2020: " +  data[i][1] + "</strong>" +
+            "<br>"+"No. of incidents: " + data[i][4]).addTo(incidents2020);}
 
         })
 
@@ -97,8 +97,8 @@ d3.json("/api/v1.0/map").then(function(data) {
             fillColor: circleColor(data[i][4]),
             fillOpacity: 0.7,
             radius: 800, 
-            }).bindPopup("<strong>" + data[i][1] + "</strong>" +
-            "<br>"+"2015 no. of incidents: " + data[i][4]).addTo(incidents2015);}
+            }).bindPopup("<strong>" + "Year 2015: " + data[i][1] + "</strong>" +
+            "<br>"+"No. of incidents: " + data[i][4]).addTo(incidents2015);}
         
         })
 
