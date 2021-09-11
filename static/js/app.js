@@ -5,7 +5,6 @@ function init() {
         var dropdownMenu = d3.select("#selDataset");
 
         var dropdownNames = item;
-        // console.log(dropdownNames);
         
         dropdownNames.forEach((item) => {
         dropdownMenu
