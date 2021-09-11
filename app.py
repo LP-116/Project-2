@@ -45,6 +45,18 @@ def scrape():
     return redirect("/")
 
 
+@app.route("/news_tab_scrape")
+def news_tab_scrape():
+
+    get_data = news_scrape.scrape_all()
+
+    mongo.db.data.update({}, get_data, upsert=True)
+    
+    news_data = mongo.db.data.find_one()
+
+    return render_template("news.html", news=news_data)
+
+
 @app.route("/api/v1.0/suburbs")
 def suburbs():
 
@@ -122,12 +134,12 @@ def data_tab():
     return render_template("data.html")
 
 
-@app.route("/news.html")
-def news_tab():
+# @app.route("/news.html")
+# def news_tab():
 
-    news_data = mongo.db.data.find_one()
+#     news_data = mongo.db.data.find_one()
     
-    return render_template("news.html", news=news_data)
+#     return render_template("news.html", news=news_data)
 
 @app.route("/api/v1.0/data_tab")
 def data():
