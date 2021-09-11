@@ -40,7 +40,7 @@ function buildGraph() {
 
             if(data[i][1] === idSelect){
                 suburb_list.push(data[i][1])
-                incident_list.push(data[i][3]) &&
+                incident_list.push(data[i][3])
                 offence_sub_div_list.push(data[i][2])
             }
         }
