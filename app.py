@@ -8,10 +8,14 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func, inspect
 
 from flask import Flask, jsonify, render_template, redirect
+from flask_pymongo import PyMongo
+import news_scrape
 
-
+app = Flask(__name__)
 
 engine = create_engine("postgresql://postgres:bootcamp@localhost:5432/crime_db")
+
+mongo = PyMongo(app, uri="mongodb://localhost:27017/news_app")
 
 
 # reflect an existing database into a new model
@@ -23,13 +27,22 @@ Base.prepare(engine, reflect=True)
 crime = Base.classes.crime
 
 
-app = Flask(__name__)
-
 @app.route("/")
 def welcome():
 
-    return render_template("index.html")
+    news_data = mongo.db.data.find_one()
 
+    return render_template("index.html", news=news_data)
+
+
+@app.route("/scrape")
+def scrape():
+
+    get_data = news_scrape.scrape_all()
+
+    mongo.db.data.update({}, get_data, upsert=True)
+
+    return redirect("/")
 
 
 @app.route("/api/v1.0/suburbs")
@@ -108,6 +121,13 @@ def data_tab():
 
     return render_template("data.html")
 
+
+@app.route("/news.html")
+def news_tab():
+
+    news_data = mongo.db.data.find_one()
+    
+    return render_template("news.html", news=news_data)
 
 @app.route("/api/v1.0/data_tab")
 def data():

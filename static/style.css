@@ -171,7 +171,7 @@ p {
 
 .news-scroll a {
     text-decoration: none;
-    color:red;
+    color:navy !important;
     font-size: 25px !important;
 }
 
@@ -185,8 +185,25 @@ p {
     margin-left: 3px;
     margin-right: 3px;
     margin-top: 2px !important;
-    background-color: navy;
+    background-color: red;
     border-radius: 50%;
     border-color:red;
     display: inline-block
+}
+
+.btn {
+  background-color: white !important;
+  border-color: red !important;
+  color: navy !important;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 150px;
+  height: 30px;
+  font-size: 14px;
+  border-width: 2px;
+}
+
+p.scrape-button {
+  margin: 0;
 }

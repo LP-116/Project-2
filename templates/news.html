@@ -5,6 +5,7 @@
         <!-- Required meta tags -->
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <!-- Bootstrap CSS -->
         <!-- Note: The 'superhero' bootswatch theme has been used-->
         <link href="../static/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -48,71 +49,24 @@
           <!-- Start of dashboard section. This is the right hand side of the grid.-->
           <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <p></p>
-                    <p></p>
-                </div>
+              <p></p>
+              <h2>Latest News Stories</h2>
+              <hr>
+              <a><b>{{ news.Headline[0] }}</b> <a href="{{ news.URL[0] }}"> {{ news.URL[0] }} </a> <a> {{ news.Description[0] }}  </a> 
+              <hr>
+              <a><b>{{ news.Headline[1] }} </b></a><a href="{{ news.URL[1] }}"> {{ news.URL[1] }}  </a> <a> {{ news.Description[1] }}  </a> 
+              <hr>
+              <a><b>{{ news.Headline[2] }} </b></a><a href="{{ news.URL[2] }}"> {{ news.URL[2] }}  </a> <a> {{ news.Description[2] }}  </a> 
+              <hr>
+              <a><b>{{ news.Headline[3] }} </b></a><a href="{{ news.URL[3] }}"> {{ news.URL[3] }}  </a> <a> {{ news.Description[3] }}  </a> 
+              <hr>
+              <a><b>{{ news.Headline[4] }} </b></a><a href="{{ news.URL[4] }}"> {{ news.URL[4] }}  </a> <a> {{ news.Description[4] }}  </a> 
+
+
+
             </div>
-            <div class="row">
-              <div class="col-lg-1"></div>
-              <div class="col-lg-2"></div>
-                <div class="col-lg-2" id="user-selection">
-                  <div class="form-group">
-                    <div class="list-group" id="filters">
-                        <input id="suburbSelect" list="myList" type="search" placeholder="Select Suburb">
-                        <datalist id="myList"></datalist>
-                      </div> 
-                    </div>
-                  </div>
-                  <div class="col-lg-2" id="user-selection">
-                    <div class="form-group">
-                      <div class="list-group" id="filters">
-                        <input id="yearSelect" list="myList2" type="search" placeholder="Select Year">
-                        <datalist id="myList2">
-                          <option value="2021">
-                          <option value="2020">
-                          <option value="2019">
-                          <option value="2018">
-                          <option value="2017">
-                          <option value="2016">
-                          <option value="2015">
-                          <option value="2014">
-                          <option value="2013">
-                          <option value="2012">
-                        </datalist>
-                      </div> 
-                      </div>
-                    </div>
-                    <div class="col-lg-2" id="user-selection">
-                      <label for="date"></label>
-                      <button id="filter-btn" type="btn btn-secondary" class="btn btn-info btn-sm"><b>Filter Table</b></button>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <p></p>
-            <div class="row">
-            <div class="col-lg-1"></div>
-            <div class="col-lg-10">
-              <div id="table-area" class="table-responsive-lg">
-                  <table id="ufo-table" class="table table-bordered table-hover">
-                  <thead class="thead-dark">
-                      <tr class="table-active">
-                      <th class="table-head">Year</th>
-                      <th class="table-head">Suburb</th>
-                      <th class="table-head">Offence Division</th>
-                      <th class="table-head">Offence Sub Division</th>
-                      <th class="table-head">No. of Incidents</th>
-                      </tr>
-                  </thead>
-                  <tbody></tbody>
-                  </table>
-              </div>
-              </div>
-            </div>
-            <p></p> 
-            <p></p>
-            <p></p>
+        </div>
+
         <div class="bg-primary" id="footer">
           <span class="bottom"><p>Monash University Data Analytics Bootcamp 2021 &nbsp &copy;&nbsp Project 2 completed by Amber Van Harskamp, Mathew Johnson & Leanne Porter. </p></span>
           </div>
