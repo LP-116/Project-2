@@ -1,4 +1,7 @@
-  function circleColor(qty)  {
+// This code is used to generate the leaflet map.
+
+// Function to determine the circle color.
+function circleColor(qty)  {
     switch (true) {
     case (qty >= 10000):
         return "#ff0000";
@@ -13,27 +16,28 @@
     case (qty > 200):
         return "#66ff8c";
     case (qty > 0):
-        return "#66ff8c";
+        return "#CDFFD9";
     
     }
 
 }
 
+// Function to determine the legend color.
 function legendColor(d) {
     return d > 10000 ? '#ff0000' :
-           d > 5000 ? '#ff8000' :
+           d > 5000 ?  '#ff8000' :
            d > 2000  ? '#ffbf00' :
            d > 1000  ? '#ffff00' :
            d > 500  ? '#bfff00':
            d > 200  ? '#66ff8c':
-                    '#66ff8c';
+                    '#CDFFD9';
 
 }
 
-
+// Reading in the map route and then building the maps.
 d3.json("/api/v1.0/map").then(function(data) {
 
-    
+    // Creating an outdoor layer.
     var outdoorLayer =L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
         tileSize: 512,
@@ -43,6 +47,7 @@ d3.json("/api/v1.0/map").then(function(data) {
         accessToken: "pk.eyJ1IjoibWpqb2huc29uOTQiLCJhIjoiY2tzcGx5eTI0MDRrMjJvcTR5dXJvYW9lbSJ9._mU94YuzAPKe6OVDEhkzKg"
       });
     
+    //   Creating a satallite layer.
     var satelliteLayer = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
         attribution: "© <a href='https://www.mapbox.com/about/maps/'>Mapbox</a> © <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a> <strong><a href='https://www.mapbox.com/map-feedback/' target='_blank'>Improve this map</a></strong>",
         tileSize: 512,
@@ -53,6 +58,7 @@ d3.json("/api/v1.0/map").then(function(data) {
         });
     
 
+    // Creating the circle markers and popup box for 2021.
     var incidents = new L.LayerGroup();
     for (var i = 0; i < data.length; i++) {
             L.circle([data[i][2],data[i][3]], { 
@@ -64,8 +70,8 @@ d3.json("/api/v1.0/map").then(function(data) {
             }).bindPopup("<strong>" + "Year 2021: " +  data[i][1] + "</strong>" +
             "<br>"+"No. of incidents: " + data[i][4]).addTo(incidents);}
 
+    // Reading in the 2020 route and creating the circle markers and popup box for 2020.
     var incidents2020 = new L.LayerGroup();
-
     d3.json("/api/v1.0/map2").then(function(data) {
 
     
@@ -81,8 +87,8 @@ d3.json("/api/v1.0/map").then(function(data) {
 
         })
 
+    // Reading in the 2015 route and creating the circle markers and popup box for 2015.
     var incidents2015 = new L.LayerGroup();
-
     d3.json("/api/v1.0/map3").then(function(data) {
 
     
@@ -98,12 +104,13 @@ d3.json("/api/v1.0/map").then(function(data) {
         
         })
 
-
+    // Creating the basemaps.
     var baseMaps = {
         "Outdoors": outdoorLayer,
         "Satellite": satelliteLayer
         }
 
+    // Creating the overlaymaps.
     var overlayMaps = {
         "2021 Incidents": incidents,
         "2020 Incidents": incidents2020,
@@ -111,6 +118,7 @@ d3.json("/api/v1.0/map").then(function(data) {
         };
 
     
+    // Creating the intial map.
     var myMap = L.map("map", {
             center: [-37.840935, 144.946457],
             zoom: 10,
@@ -118,11 +126,13 @@ d3.json("/api/v1.0/map").then(function(data) {
           });
 
 
+    // Adding the control layers.
     L.control.layers(baseMaps).addTo(myMap);
 
+    // Adding the overlays as another control layer - more practical to be able to toggle between years rather than overlay. It creates a better visualisation.
     L.control.layers(overlayMaps,null,{collapsed:false}).addTo(myMap);
 
-
+    // Creating the legend.
     var legend = L.control({position: 'bottomright'});
 
     legend.onAdd = function (map) {
