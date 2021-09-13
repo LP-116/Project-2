@@ -125,4 +125,8 @@ To run the app.py file please follow the below directions:
 * In the terminal type “python app.py” to run the app on a live server.
 * Navigate to the server location in the web browser
 
+Example:
+<img src=https://user-images.githubusercontent.com/82348616/133034287-9dcbdacd-b616-4c1d-a44b-29020d075787.PNG" width="700">
+
+
 
