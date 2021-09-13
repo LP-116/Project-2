@@ -1,3 +1,4 @@
+# Set up and dependencies.
 import datetime as dt 
 import numpy as np 
 import pandas as pd 
@@ -10,23 +11,29 @@ from sqlalchemy import create_engine, func, inspect
 from flask import Flask, jsonify, render_template, redirect
 from flask_pymongo import PyMongo
 import news_scrape
+from login_info import *
 
+# Create Flask
 app = Flask(__name__)
 
-engine = create_engine("postgresql://postgres:bootcamp@localhost:5432/crime_db")
+# Connect to the postgresql database.
+engine = create_engine(f"postgresql://{username}:{password}@localhost:5432/crime_db")
 
+# Connect to the Mongo database.
 mongo = PyMongo(app, uri="mongodb://localhost:27017/news_app")
 
 
-# reflect an existing database into a new model
+# Reflect an existing database into a new model.
 Base = automap_base()
 
-# reflect the tables
+# Reflect the tables.
 Base.prepare(engine, reflect=True)
 
+# Save references to the table
 crime = Base.classes.crime
 
 
+# Homepage Route. Grabs one entry from Mongo database for the news headlines.
 @app.route("/")
 def welcome():
 
@@ -35,6 +42,7 @@ def welcome():
     return render_template("index.html", news=news_data)
 
 
+# Route that returns the news_scrape data
 @app.route("/scrape")
 def scrape():
 
@@ -45,6 +53,9 @@ def scrape():
     return redirect("/")
 
 
+# Route used for when clicking on news tab 
+# Note: If this route is not attached to the tab, if a person does not have an existing entry in the database the tab will not display because it can't iterate over the array's.
+# Attaching the scraping route to the news tab link ensures that the scraping is complete and the page will generate (a bit time consuming, but necessary.)
 @app.route("/news_tab_scrape")
 def news_tab_scrape():
 
@@ -57,6 +68,7 @@ def news_tab_scrape():
     return render_template("news.html", news=news_data)
 
 
+# This route returns a list of unique suburbs - it is used to populate the suburb drop down boxes. 
 @app.route("/api/v1.0/suburbs")
 def suburbs():
 
@@ -69,7 +81,7 @@ def suburbs():
     return jsonify(suburbs)
 
 
-
+# This route is used to create the bar graph. It shows all data for the year 2021, grouped by suburb.
 @app.route("/api/v1.0/incidents")
 def incidents():
 
@@ -85,6 +97,7 @@ def incidents():
     return jsonify(incidents)
 
 
+# This route is used to create the 2021 layer of the map.
 @app.route("/api/v1.0/map")
 def total_map():
 
@@ -99,7 +112,7 @@ def total_map():
     return jsonify(total_map)
 
 
-
+# This route is used to create the 2020 layer of the map.
 @app.route("/api/v1.0/map2")
 def map_2020():
 
@@ -114,6 +127,7 @@ def map_2020():
     return jsonify(map_2020)
 
 
+# This route is used to create the 2015 layer of the map.
 @app.route("/api/v1.0/map3")
 def map_2015():
 
@@ -128,19 +142,14 @@ def map_2015():
     return jsonify(map_2015)
 
 
+# This route is used to render the data tab.
 @app.route("/data.html")
 def data_tab():
 
     return render_template("data.html")
 
 
-# @app.route("/news.html")
-# def news_tab():
-
-#     news_data = mongo.db.data.find_one()
-    
-#     return render_template("news.html", news=news_data)
-
+# This route is used to generate the table on the data tab.
 @app.route("/api/v1.0/data_tab")
 def data():
 
@@ -153,6 +162,7 @@ def data():
     return jsonify(data_tab)
 
 
+# This route is used to generate the line graph.
 @app.route("/api/v1.0/line_data")
 def line():
 
@@ -165,6 +175,7 @@ def line():
     return jsonify(line_data)
 
 
+# This route is used to generate the stats data on the home page.
 @app.route("/api/v1.0/stats_data")
 def stats():
 

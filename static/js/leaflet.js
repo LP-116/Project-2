@@ -1,7 +1,3 @@
-
-var incidentsURL = "/api/v1.0/map2"
-
-
   function circleColor(qty)  {
     switch (true) {
     case (qty >= 10000):
