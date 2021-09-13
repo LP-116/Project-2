@@ -135,7 +135,6 @@ p {
       text-shadow: 0 0 20px #ff0000, 0 0 30px #ec4646, 0 0 40px #f10202, 0 0 50px #f10202, 0 0 60px rgb(151, 0, 0), 0 0 70px #1a1aff, 0 0 80px #1a1aff;
     }
   }
-  /* text-shadow: 0 0 20px #6666ff, 0 0 30px #1a1aff, 0 0 40px #1a1aff, 0 0 50px #1a1aff, 0 0 60px #1a1aff, 0 0 70px #1a1aff, 0 0 80px #1a1aff; */
 
   /* Reference for glow feature https://www.w3schools.com/howto/howto_css_glowing_text.asp */
 .glow2 {
@@ -156,7 +155,8 @@ p {
     }
   }
 
-  @import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .mt-5 {
   margin:0 !important;
@@ -165,7 +165,6 @@ p {
 
 .news {
     width: 160px;
-    /* background-color: navy !important; */
     border-color:red !important;
 }
 

@@ -149,7 +149,8 @@ d3.json("/api/v1.0/map").then(function(data) {
         
         return div;
         };
-      
+        
+    // Adding the legend to the map.
       legend.addTo(myMap);
       
 
