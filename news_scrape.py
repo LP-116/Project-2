@@ -1,3 +1,4 @@
+# Import and dependencies
 from bs4 import BeautifulSoup as bs
 from splinter import Browser
 from webdriver_manager.chrome import ChromeDriverManager
@@ -8,17 +9,22 @@ import json
 
 def scrape_all():
 
+    # Establishing connection to the browser.
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
 
+    # News webpage to scrape the data.
     url='https://www.news.com.au/national/victoria/crime'
     browser.visit(url)
 
+    # Create BeautifulSoup object
     html = browser.html
     soup = bs(html, 'html.parser')
 
 
     try:
+        # Finding the first 5 headlines, urls and descriptions and adding to a list.
+
         headline_list = []
 
         headlines = soup.find_all('a', class_='storyblock_title_link')
@@ -47,22 +53,19 @@ def scrape_all():
                 paragraph_list.append(about)
 
 
+        # Creating a dictionary to hold all the data.
         news_dict = {
             'Headline':headline_list,
             'URL':link_list,
             'Description':paragraph_list}
-      
 
-        # df = pd.DataFrame(news_dict)
 
-        # top5 = df.head()
-
-        # top5_dict = json.loads(top5.to_json(orient='records'))
-
+        # Ending the browser session.
         browser.quit()
 
     except AttributeError:
         return None
 
+    # The news_dict is returned once the scrape is complete.
     return news_dict
 
