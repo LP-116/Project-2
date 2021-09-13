@@ -69,7 +69,7 @@ The below tools were used in creating our dashboard:
 * A bar graph showing the top 5 offences for the year 2021 appears and a line graph showing the total number of offences for the suburb selected for the past 10 years.
 * A stats section shows the difference between total number of offences between 2021 and 2020.
 * Interactive maps that shows incidents via suburb for the years 2021, 2020 and 2015
-* The 5 latest news headlines are scraped from the Victorian crime news section and displayed on a moving banner at the top of the screen. 
+* The 5 latest news headlines are scraped from the Victorian crime news section and displayed on a moving banner at the top of the screen. The news headlines update when the button is clicked.
 * A news tab is available that gives users more information about the news headline and provides a link to the story.
 * A data tab is available for the users to look up a suburb and return the data in a table format.
 
