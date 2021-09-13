@@ -65,6 +65,8 @@ function runFilter() {
     var yearValue = yearElement.property("value");
     console.log(yearValue);
     
+    var tbody = d3.select("tbody");
+    
     // Using the data_tab route.
     d3.json("/api/v1.0/data_tab").then((data)=> {
         
