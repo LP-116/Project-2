@@ -91,6 +91,10 @@ However, we are very happy with how the dashboard looks.
 
 <img src="https://user-images.githubusercontent.com/82348616/133033607-f087b9d7-195d-47bd-a79b-05ad89b60166.PNG" width="700">
 
+<img src="https://user-images.githubusercontent.com/82348616/133033982-8ac64820-ee03-4fcf-ace1-0dc37ecfcfc8.PNG" width="700">
+<img src="https://user-images.githubusercontent.com/82348616/133034004-66154aad-3829-479d-979a-292208875612.PNG" width="700">
+<img src="https://user-images.githubusercontent.com/82348616/133034032-566b03ae-f87f-4637-8aa2-2c18fc79b31c.PNG" width="700">
+
 
 ![ezgif com-gif-maker (3)](https://user-images.githubusercontent.com/82348616/133033289-d8b3f3a2-068b-4803-bb7b-cec3144cfd85.gif)
 
