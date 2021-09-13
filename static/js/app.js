@@ -1,3 +1,7 @@
+// Functions used to build the graph and stats data.
+
+// This function is run on webpage load. 
+//  It builds the suburb dropdown menu and runs the buildgraph and updatestats functions. 
 function init() {
 
     d3.json("/api/v1.0/suburbs").then((item) => {
@@ -21,21 +25,27 @@ function init() {
 };
 
 
+// This function builds the bar and line graphs.
 function buildGraph() {
     
+    // Reading the incidents route data.
     d3.json("/api/v1.0/incidents").then((data) => {
 
+        // Clearing the existing chart space to avoid overlap issues.
         document.querySelector("#chartReport").innerHTML = '<canvas id="myChart"></canvas>';
 
+        // Getting the suburb value in the dropdown box.
         var idSelect = d3.select("#selDataset").property("value")
 
         console.log(idSelect);
        
+        // Creating blank lists to hold results.
         suburb_list = []
         incident_list = []
         offence_sub_div_list = []
 
 
+        // Everytime the suburb in the dropdown box is matched to the json data, push the required part into the matching list.
         for (var i in data) {
 
             if(data[i][1] === idSelect){
@@ -45,12 +55,14 @@ function buildGraph() {
             }
         }
 
+        // Filter the list's to return top 5 results.
         var top5_incidents = incident_list.slice(0,5);
         var top5_sub_div = offence_sub_div_list.slice(0,5);
 
         console.log(top5_incidents);
         console.log(top5_sub_div);
 
+        // Create the graph using Chart.js
         const barColors = ["#87CEEB", "#1E90FF", "#00008B", "#1f50cc", "#1E90FF"]
         var myChart = new Chart("myChart", {
         type: "horizontalBar",
@@ -92,17 +104,22 @@ function buildGraph() {
             
     }})})
 
+    // Reading in the line_data route.
     d3.json("/api/v1.0/line_data").then((data) => {
 
+        // Clearing the line chart area.
         document.querySelector("#chartReport2").innerHTML = '<canvas id="myChart2"></canvas>';
 
+        // Getting the suburb value from the dropdown box.
         var idSelect = d3.select("#selDataset").property("value")
 
         console.log(idSelect);
 
+        // Creating blank lists.
         incident_list = []
         year_list = []
 
+        // Everytime there is a suburb match, push the data into the corresponding list.
         for (var i in data) {
 
             if(data[i][1] === idSelect){
@@ -115,6 +132,7 @@ function buildGraph() {
         console.log(incident_list);
         console.log(year_list)
 
+        // Creating the line chart using chart.js
         const barColors = ["#87CEEB"]
         new Chart("myChart2", {
         type: "line",
@@ -161,18 +179,22 @@ function buildGraph() {
 
 }
 
+// This function is used to update the stats_data.
 function updatestats() {
 
-
+    // Reading in the stats_data route.
     d3.json("/api/v1.0/stats_data").then((data) => {
 
+        // Getting the suburb from the drop down box.
         var idSelect = d3.select("#selDataset").property("value")
 
         console.log(idSelect);
 
+        // Creating blank lists.
         incident_list = []
         incident_list2 = []
 
+        // Everytime the suburb and year match 2021, push the data into the corresponding list.
         for (var i in data) {
 
             if(data[i][1] === idSelect && data[i][0] === parseInt("2021")){
@@ -180,6 +202,7 @@ function updatestats() {
             }
         }
 
+        // Everytime the suburb and year match 2020, push the data into the corresponding list.
         for (var x in data) {
 
             if(data[x][1] === idSelect && data[x][0] === parseInt("2020")){
@@ -187,13 +210,16 @@ function updatestats() {
             }
         }
 
+        // Calculate the difference and percentage change.
         var difference = (incident_list[0] - incident_list2[0])
         var difference2 = ((incident_list2[0] - incident_list[0]) / incident_list[0] * 100).toFixed(2);
 
+        // Input the results into the card as text.
         d3.select("#card2021").text(incident_list[0]);
         d3.select("#card2020").text(incident_list2[0]);
         d3.select("#difference").text(difference);
 
+        // Used for formatting the % difference.
         if (difference < 0) {
 
             d3.select("#difference2").text((difference2) + "% decrease");
@@ -211,12 +237,13 @@ function updatestats() {
 }
 
 
-
-
+// Each time the drop down selection is changed, run the functions.
 function optionChanged()
-{ buildGraph();
+{ 
+buildGraph();
 updatestats()
  }
 
 
+// Run the init function on webpage load.
 init();
