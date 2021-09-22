@@ -61,29 +61,30 @@ d3.json("/api/v1.0/map").then(function(data) {
     // Creating the circle markers and popup box for 2021.
     var incidents = new L.LayerGroup();
     for (var i = 0; i < data.length; i++) {
-            L.circle([data[i][2],data[i][3]], { 
+            L.circle([data[i].latitude, data[i].longitude], { 
             weight: 0.4,
             color: "black",
-            fillColor: circleColor(data[i][4]),
+            fillColor: circleColor(data[i].incidents),
             fillOpacity: 0.7,
             radius: 800, 
-            }).bindPopup("<strong>" + "Year 2021: " +  data[i][1] + "</strong>" +
-            "<br>"+"No. of incidents: " + data[i][4]).addTo(incidents);}
+            }).bindPopup("<strong>" + "Year 2021: " +  data[i].suburb + "</strong>" +
+            "<br>"+"No. of incidents: " + data[i].incidents).addTo(incidents);}
 
+            
     // Reading in the 2020 route and creating the circle markers and popup box for 2020.
     var incidents2020 = new L.LayerGroup();
     d3.json("/api/v1.0/map2").then(function(data) {
 
     
     for (var i = 0; i < data.length; i++) {
-            L.circle([data[i][2],data[i][3]], { 
+            L.circle([data[i].latitude, data[i].longitude], { 
             weight: 0.4,
             color: "black",
-            fillColor: circleColor(data[i][4]),
+            fillColor: circleColor(data[i].incidents),
             fillOpacity: 0.7,
             radius: 800, 
-            }).bindPopup("<strong>" + "Year 2020: " +  data[i][1] + "</strong>" +
-            "<br>"+"No. of incidents: " + data[i][4]).addTo(incidents2020);}
+            }).bindPopup("<strong>" + "Year 2020: " +  data[i].suburb + "</strong>" +
+            "<br>"+"No. of incidents: " + data[i].incidents).addTo(incidents2020);}
 
         })
 
@@ -93,14 +94,14 @@ d3.json("/api/v1.0/map").then(function(data) {
 
     
     for (var i = 0; i < data.length; i++) {
-            L.circle([data[i][2],data[i][3]], { 
+            L.circle([data[i].latitude, data[i].longitude], { 
             weight: 0.4,
             color: "black",
-            fillColor: circleColor(data[i][4]),
+            fillColor: circleColor(data[i].incidents),
             fillOpacity: 0.7,
             radius: 800, 
-            }).bindPopup("<strong>" + "Year 2015: " + data[i][1] + "</strong>" +
-            "<br>"+"No. of incidents: " + data[i][4]).addTo(incidents2015);}
+            }).bindPopup("<strong>" + "Year 2015: " + data[i].suburb + "</strong>" +
+            "<br>"+"No. of incidents: " + data[i].incidents).addTo(incidents2015);}
         
         })
 

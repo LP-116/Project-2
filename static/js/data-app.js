@@ -71,7 +71,7 @@ function runFilter() {
     d3.json("/api/v1.0/data_tab").then((data)=> {
         
         // Filter the results on suburb and year.
-        var filteredData = data.filter(dataEntry => ((dataEntry[1] === suburbValue) && dataEntry[0] === parseInt(yearValue, 10)))
+        var filteredData = data.filter(dataEntry => ((dataEntry.suburb === suburbValue) && dataEntry.year === parseInt(yearValue, 10)))
 
         console.log(filteredData);
 

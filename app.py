@@ -78,7 +78,10 @@ def suburbs():
     
     session.close()
 
-    return jsonify(suburbs)
+    suburb_list = list(np.ravel(suburbs))
+
+    return jsonify(suburb_list)
+
 
 
 # This route is used to create the bar graph. It shows all data for the year 2021, grouped by suburb.
@@ -93,8 +96,17 @@ def incidents():
 
     session.close()
 
+    incident_list = []
 
-    return jsonify(incidents)
+    for year, suburb, offence_sub_div, sum_incidents in incidents:
+        incident_dict ={}
+        incident_dict["year"] = year
+        incident_dict["suburb"] = suburb
+        incident_dict["sub"] = offence_sub_div
+        incident_dict["incidents"] = sum_incidents
+        incident_list.append(incident_dict)
+
+    return jsonify(incident_list)
 
 
 # This route is used to create the 2021 layer of the map.
@@ -107,9 +119,19 @@ def total_map():
 
     total_map = session.query(crime.year, crime.suburb, crime.latitude, crime.longitude, func.sum(crime.incidents)).group_by(crime.year, crime.suburb, crime.latitude, crime.longitude).filter((crime.year == year)).order_by(func.sum(crime.incidents).desc()).all()
 
-    session.close()
+    map_list_2021 = []
 
-    return jsonify(total_map)
+    for year, suburb, latitude, longitude, sum_incidents in total_map:
+        map_dict_2021 ={}
+        map_dict_2021["year"] = year
+        map_dict_2021["suburb"] = suburb
+        map_dict_2021["latitude"] = latitude
+        map_dict_2021["longitude"] = longitude
+        map_dict_2021["incidents"] = sum_incidents
+        map_list_2021.append(map_dict_2021)
+
+
+    return jsonify(map_list_2021)
 
 
 # This route is used to create the 2020 layer of the map.
@@ -124,7 +146,19 @@ def map_2020():
 
     session.close()
 
-    return jsonify(map_2020)
+    map_list_2020 = []
+
+    for year, suburb, latitude, longitude, sum_incidents in map_2020:
+        map_dict_2020 ={}
+        map_dict_2020["year"] = year
+        map_dict_2020["suburb"] = suburb
+        map_dict_2020["latitude"] = latitude
+        map_dict_2020["longitude"] = longitude
+        map_dict_2020["incidents"] = sum_incidents
+        map_list_2020.append(map_dict_2020)
+
+
+    return jsonify(map_list_2020)
 
 
 # This route is used to create the 2015 layer of the map.
@@ -139,7 +173,19 @@ def map_2015():
 
     session.close()
 
-    return jsonify(map_2015)
+    map_list_2015 = []
+
+    for year, suburb, latitude, longitude, sum_incidents in map_2015:
+        map_dict_2015 ={}
+        map_dict_2015["year"] = year
+        map_dict_2015["suburb"] = suburb
+        map_dict_2015["latitude"] = latitude
+        map_dict_2015["longitude"] = longitude
+        map_dict_2015["incidents"] = sum_incidents
+        map_list_2015.append(map_dict_2015)
+
+
+    return jsonify(map_list_2015)
 
 
 # This route is used to render the data tab.
@@ -159,7 +205,18 @@ def data():
 
     session.close()
 
-    return jsonify(data_tab)
+    data_list = []
+
+    for year, suburb, offence_div, offence_sub_div, sum_incidents in data_tab:
+        data_dict ={}
+        data_dict["year"] = year
+        data_dict["suburb"] = suburb
+        data_dict["off_div"] = offence_div
+        data_dict["sub_div"] = offence_sub_div
+        data_dict["incidents"] = sum_incidents
+        data_list.append(data_dict)
+
+    return jsonify(data_list)
 
 
 # This route is used to generate the line graph.
@@ -172,7 +229,16 @@ def line():
 
     session.close()
 
-    return jsonify(line_data)
+    line_list = []
+
+    for year, suburb, sum_incidents in line_data:
+        line_dict ={}
+        line_dict["year"] = year
+        line_dict["suburb"] = suburb
+        line_dict["incidents"] = sum_incidents
+        line_list.append(line_dict)
+
+    return jsonify(line_list)
 
 
 # This route is used to generate the stats data on the home page.
@@ -183,12 +249,20 @@ def stats():
 
     year = "2020"
     
-    stats = session.query(crime.year, crime.suburb, crime.latitude, crime.longitude, func.sum(crime.incidents)).group_by(crime.year, crime.suburb, crime.latitude, crime.longitude).filter((crime.year >= year)).order_by(func.sum(crime.incidents).desc()).all()
+    stats = session.query(crime.year, crime.suburb, func.sum(crime.incidents)).group_by(crime.year, crime.suburb).filter((crime.year >= year)).order_by(func.sum(crime.incidents).desc()).all()
 
     session.close()
 
-    return jsonify(stats)
+    stats_list = []
 
+    for year, suburb, sum_incidents in stats:
+        stats_dict ={}
+        stats_dict["year"] = year
+        stats_dict["suburb"] = suburb
+        stats_dict["incidents"] = sum_incidents
+        stats_list.append(stats_dict)
+
+    return jsonify(stats_list)
 
 if __name__ == "__main__":
     app.run(debug=True)

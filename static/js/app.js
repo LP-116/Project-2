@@ -48,10 +48,10 @@ function buildGraph() {
         // Everytime the suburb in the dropdown box is matched to the json data, push the required part into the matching list.
         for (var i in data) {
 
-            if(data[i][1] === idSelect){
-                suburb_list.push(data[i][1])
-                incident_list.push(data[i][3])
-                offence_sub_div_list.push(data[i][2])
+            if(data[i].suburb === idSelect){
+                suburb_list.push(data[i].suburb)
+                incident_list.push(data[i].incidents)
+                offence_sub_div_list.push(data[i].sub)
             }
         }
 
@@ -122,9 +122,9 @@ function buildGraph() {
         // Everytime there is a suburb match, push the data into the corresponding list.
         for (var i in data) {
 
-            if(data[i][1] === idSelect){
-                year_list.push(data[i][0])
-                incident_list.push(data[i][2])
+            if(data[i].suburb === idSelect){
+                year_list.push(data[i].year)
+                incident_list.push(data[i].incidents)
             }
         }
 
@@ -197,16 +197,16 @@ function updatestats() {
         // Everytime the suburb and year match 2021, push the data into the corresponding list.
         for (var i in data) {
 
-            if(data[i][1] === idSelect && data[i][0] === parseInt("2021")){
-                incident_list.push(data[i][4])
+            if(data[i].suburb === idSelect && data[i].year === parseInt("2021")){
+                incident_list.push(data[i].incidents)
             }
         }
 
         // Everytime the suburb and year match 2020, push the data into the corresponding list.
         for (var x in data) {
 
-            if(data[x][1] === idSelect && data[x][0] === parseInt("2020")){
-                incident_list2.push(data[x][4])
+            if(data[x].suburb === idSelect && data[x].year === parseInt("2020")){
+                incident_list2.push(data[x].incidents)
             }
         }
 
