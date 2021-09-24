@@ -120,7 +120,8 @@ Import the crime_db file into PGAdmin or follow the below steps to step up the d
 
 To run the app.py file please follow the below directions:
 * Copy and paste the login_info file created during the database creation to the main folder of the repository (or alternatively create a new file containing your username and password for the PostgreSQL database).
-* In terminal navigate to the cloned repository location and activate the PythonData environment.
+* Create a virtual environment that has all the packages required (as listed in the requirements.txt file).
+* In terminal navigate to the cloned repository location and activate the virtual environment that has all the packages required installed.
 * Install the chart.js library by running __npm install chart.js__
 * In the terminal type “python app.py” to run the app on a live server.
 * Navigate to the server location in the web browser
