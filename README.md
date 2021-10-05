@@ -44,6 +44,7 @@ Once the database was loaded and ready to use we moved into the creation phase.
 Firstly a skeleton HTML file was created to outline where our visualisations would go and give us a html file to work with.
 Next we moved on to creating the app routes.
 12 app routes were created that returned data in json format:
+
 *	2 routes related to rendering the html pages
 *	2 routes related to web scraping
 *	1 route that was used to populate the drop down menu’s
