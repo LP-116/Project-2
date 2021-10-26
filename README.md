@@ -3,6 +3,11 @@
 
 ## Project Team: Leanne Porter, Mathew Johnson, Amber Van Harskamp
 
+#### To view a live version of the app please click [here] (https://crimeapp031021.herokuapp.com/)
+Note: The above link is a modified replica of the project. The code in this repository could not be deployed to Heroku due to the database size.
+To be able to deploy the project, the code was rewritten to read in csv files and then complete the calculations.
+The code for the deployed app can be found at here: https://github.com/LP-116/Vic_crime_dashboard
+
 #### To run the dashboard on your computer follow the directions [here](#running-the-app)
 
 
