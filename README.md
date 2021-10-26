@@ -8,6 +8,8 @@ Note: The above link is a modified replica of the project. The code in this repo
 To be able to deploy the project, the code was rewritten to read in csv files and then complete the calculations.
 The code for the deployed app can be found at here: https://github.com/LP-116/Vic_crime_dashboard
 
+Please also note that if the app has been inactive for 30 minutes Heroku puts it to sleep. Reinitialising the app can take 30 - 40 seconds.
+
 #### To run the dashboard on your computer follow the directions [here](#running-the-app)
 
 
